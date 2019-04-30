@@ -1,4 +1,5 @@
 <?php
+include("servico/validacaoServico.php");
 
 function visualizar() {
     
@@ -17,6 +18,11 @@ function adicionar() {
         $descricao = $_POST["descricao"];
         $preco = $_POST["preco"];
         
+        echo vali_preenchido($nome). "<br>"; 
+        echo vali_preenchido($descricao). "<br>"; 
+        echo vali_num($quant). "<br>"; 
+        echo vali_num($preco). "<br>"; 
+
         print_r($_POST);
     } else {
         exibir("produtos/formulario");
