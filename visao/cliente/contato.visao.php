@@ -1,10 +1,21 @@
-<h1>Contato</h1>
-
-<form action="" method="post" >
-    Nome: <br> <input type="text" name="nome"><br>
-    Tel: <br> <input type="text" name="tel"><br>
-    Email:<br> <input type="text" name="email"><br>
-    Mensagem:<br> <input type="text" name="msg"><br><br>
-    <button>Limpar</button>
-    <button>Enviar</button>
-</form>
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+        <form action="" method="POST">
+            Nome: <input type="text" name="nome"><br><br>
+            Telefone: <input type="text" name="tel"><br><br>
+            Email: <input type="text" name="email"><br><br>
+            Mensagem: <input type="text" name="mens"><br><br>
+            <button>Enviar</button>
+        </form>
+    </body>
+</html>
