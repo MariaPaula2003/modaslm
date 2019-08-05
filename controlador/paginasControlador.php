@@ -7,10 +7,10 @@ function index() {
     exibir("paginas/inicial");
 }
 
-function sobre() {
+function sobre(){
     exibir("paginas/sobre");
 }
 
-function mapa() {
+function mapa(){
     exibir("paginas/mapa");
 }

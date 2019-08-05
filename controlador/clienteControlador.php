@@ -1,43 +1,81 @@
 <?php
-include("servico/validacaoServico.php");
 
-function cadastro() {
+require_once 'servico/validacaoServico.php';
+require_once 'modelo/clienteModelo.php';
+
+
+function cadastro(){
     if (ehPost()){
        $nome = $_POST["nome"];
+        $email = $_POST["email"];
+        $senha = $_POST["senha"];
        $cpf = $_POST["cpf"];
-       $tel = $_POST["tel"];
-       $s = $_POST["sexo"];
-       $email = $_POST["email"];
-       $senha = $_POST["senha"];
-       $repetirsenha = $_POST["repetirsenha"];
-        
-       echo vali_preenchido($nome). "<br>";
-       echo vali_preenchido($senha). "<br>";
-       echo vali_preenchido($repetirsenha). "<br>";
-       echo vali_email($email). "<br>"; 
-       echo vali_num($cpf). "<br>"; 
-       echo vali_num($tel). "<br>"; 
+       $sexo = $_POST ["sexo"];
+       $dataNasc = $_POST ["dataNasc"];
+       $tipousuario = $_POST ["tipousuario"];
+ 
+       $erros = array();
        
-        print_r($_POST);
-    } else {
-        exibir("cliente/cadastro");
-    }
+       if (valida_nao_vazio($nome) != NULL){
+          $erros[]= "Você deve inserir um valor no campo Nome";  
+      }
+      if (valida_nao_vazio($sexo) != NULL){
+          $erros[]= "Você deve inserir um valor no campo Sexo";  
+      }
+        if (valida_nao_vazio($dataNasc) != NULL){
+          $erros[]= "Você deve inserir um valor no campo Data de Nascimento";  
+      }
+     if (vali_email($email) != NULL){
+         $erros[]= "Informe um email válido."; 
+     }
+     
+     if(count($erros) > 0){
+         $dados = array();
+         $dados["erros"] = $erros;
+         exibir("cliente/cadastro", $dados);
+     }else{
+         $mensagem = adicionarCadastro($nome,$cpf,$senha,$email,$sexo,$tipousuario,$dataNasc);
+        redirecionar("cliente/listarClientes");
+     }
+      
+   }else{
+       exibir("cliente/cadastro");
+   } 
 }
 
 function contato(){
-    if(ehPost()){
+    if (ehPost()){
         $nome = $_POST["nome"];
-        $tel = $_POST["tel"];
+        $telefone = $_POST["tel"];
         $email = $_POST["email"];
-        $mensagem = $_POST["msg"];
-        
-        echo vali_preenchido($nome). "<br>";
-        echo vali_preenchido($mensagem). "<br>";
-        echo vali_email($email). "<br>"; 
-        echo vali_num($tel). "<br>"; 
-        
-        print_r($_POST);
-    } else {
-        exibir("cliente/contato");
-    }
+        $mensagem = $_POST["mens"];
+       
+         if (valida_nao_vazio($nome) != NULL){
+          $erros[]= "Você deve inserir um valor no campo Nome";  
+      }
+      
+      if (valida_nao_vazio_tipoEs($tel) != NULL){
+          $erros[]= "Informe um valor numérico valido no campo Telefone.";    
+      }
+        if (vali_email($email) != NULL){
+         $erros[]= "Informe um email válido."; 
+     }
+    
+    }  
+}
+
+function listarClientes(){
+    $dados = array();
+    $dados["clientes"] = pegarTodosClientes();
+    exibir("cliente/listar", $dados);
+}
+
+function ver($cod_cliente){
+    $dados["cliente"] = pegarUsuarioPorId($cod_cliente);
+    exibir("cliente/visualizar", $dados);
+}
+
+function deletar($cod_cliente){
+    $msg = deletarCliente($cod_cliente);
+    redirecionar("cliente/listarClientes");
 }

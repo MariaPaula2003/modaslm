@@ -52,8 +52,8 @@
 
         </div>
         </div>
-
-         <?php include('rodape.php');?>
-
+         
     </body>
+    <?php include('rodape.php');?>
+
 </html>

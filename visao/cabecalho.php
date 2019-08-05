@@ -179,6 +179,7 @@ $(document).ready(function(){
 <div class="e">
   <a href="login.html"><p id= "icon_Minha_conta" style="color:black;font-size:25px;text-align:center;padding:1%;"><i class="fi-torso" style="margin-right:10px;"></i>Minha Conta</p></a>
 </div>
+    
 <div class="m">
   <a href="carrinho.html"><p id= "icon_carrinho" style="color: black" ><i style="font-size:40px" class="fi-shopping-cart"></i></p></a>
 </div>
@@ -192,59 +193,3 @@ $(document).ready(function(){
       
 <br>
 
-<div class="row">
-<fieldset class="Produtos" style="border-top: 1px solid #333;border-bottom: none; border-left: none;border-right: none;display: block;text-align: center;">
-    <legend style="padding: 5px 10px;"><h1 class="titulo">Ofertas Imperdíveis</h1></legend>
-</fieldset>  
-<div class="w3-content w3-display-container" style="max-width:800px">
-  <img class="mySlides" src="imagens/banner.jpg" style="width:100%;height:230px;">
-  <img class="mySlides" src="imagens/banner1.png" style="width:100%;height:230px;">
-  <img class="mySlides" src="imagens/banner2.jpg" style="width:100%;height:230px;">
-  <img class="mySlides" src="imagens/banner3.jpg" style="width:100%;height:230px;">
-  <div class="w3-center w3-container w3-section w3-large w3-text-black w3-display-bottommiddle" style="width:100%">
-    <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>
-    <div class="w3-right w3-hover-text-khaki" onclick="plusDivs(1)">&#10095;</div>
-    <span class="w3-badge demo w3-border w3-transparent w3-hover-pink" onclick="currentDiv(1)"></span>
-    <span class="w3-badge demo w3-border w3-transparent w3-hover-pink" onclick="currentDiv(2)"></span>
-    <span class="w3-badge demo w3-border w3-transparent w3-hover-pink" onclick="currentDiv(3)"></span>
-    <span class="w3-badge demo w3-border w3-transparent w3-hover-pink" onclick="currentDiv(4)"></span>
-  </div>
-</div>
-
-<script>
-var slideIndex = 1;
-showDivs(slideIndex);
-
-function plusDivs(n) {
-  showDivs(slideIndex += n);
-}
-
-function currentDiv(n) {
-  showDivs(slideIndex = n);
-}
-
-function showDivs(n) {
-  var i;
-  var x = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("demo");
-  if (n > x.length) {slideIndex = 1}    
-  if (n < 1) {slideIndex = x.length}
-  for (i = 0; i < x.length; i++) {
-     x[i].style.display = "none";  
-  }
-  for (i = 0; i < dots.length; i++) {
-     dots[i].className = dots[i].className.replace(" w3-white", "");
-  }
-  x[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " w3-white";
-}
-</script>
-
-
-<br>
-
-<div class="row">
- <fieldset class="Produtos" style="border-top: 1px solid #333;border-bottom: none; border-left: none;border-right: none;display: block;text-align: center;">
-    <legend style="padding: 5px 10px;"><h1 class="titulo">Principais Produtos</h1></legend>
-</fieldset>  
- </div> 
